@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/person"
+        android:id="@+id/menu_overView"
         android:icon="@drawable/ic_over_view_chart"
         android:title="@string/str_over_view" />
     <item
-        android:id="@+id/home"
+        android:id="@+id/menu_budget"
         android:icon="@drawable/ic_budget"
         android:title="@string/str_budget" />
     <item
-        android:id="@+id/settings"
+        android:id="@+id/menu_wallet"
         android:icon="@drawable/ic_wallet"
         android:title="@string/str_wallet" />
 </menu>
