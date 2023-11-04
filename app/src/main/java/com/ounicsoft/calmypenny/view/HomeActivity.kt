@@ -1,16 +1,20 @@
-package com.ounicsoft.calmypenny
+package com.ounicsoft.calmypenny.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.ounicsoft.calmypenny.R
 import com.ounicsoft.calmypenny.databinding.ActivityHomeBinding
+import com.ounicsoft.calmypenny.view.home.BudgetFragment
+import com.ounicsoft.calmypenny.view.home.OverViewFragment
+import com.ounicsoft.calmypenny.view.home.WalletFragment
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private val overViewFragment = OverViewFragment()
-    private val budgetFragment = BudgetFragment()
-    private val walletFragment = WalletFragment()
+    private var overViewFragment: OverViewFragment = OverViewFragment()
+    private var budgetFragment: BudgetFragment = BudgetFragment()
+    private var walletFragment: WalletFragment = WalletFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
