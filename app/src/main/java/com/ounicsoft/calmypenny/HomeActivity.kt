@@ -8,27 +8,29 @@ import com.ounicsoft.calmypenny.databinding.ActivityHomeBinding
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private val overViewFragment = OverViewFragment()
+    private val budgetFragment = BudgetFragment()
+    private val walletFragment = WalletFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val overViewFragment = OverViewFragment()
-        val budgetFragment = BudgetFragment()
-        val walletFragment = WalletFragment()
-
         setCurrentFragment(overViewFragment)
+        //Handle Bottom Navigation ClickListen
+        handleBottomClickListener()
 
+
+    }
+
+    private fun handleBottomClickListener() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_overView -> setCurrentFragment(overViewFragment)
                 R.id.menu_budget -> setCurrentFragment(budgetFragment)
                 R.id.menu_wallet -> setCurrentFragment(walletFragment)
-
             }
             true
         }
-
     }
 
     private fun setCurrentFragment(fragment: Fragment) =
@@ -36,5 +38,4 @@ class HomeActivity : AppCompatActivity() {
             replace(R.id.home_HostFragment, fragment)
             commit()
         }
-
 }
