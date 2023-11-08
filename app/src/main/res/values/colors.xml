@@ -7,4 +7,18 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--Custom Colors for Apps-->
+    <color name="blue_sapphire">#22223b</color>
+    <color name="rhythm">#4a4e69</color>
+    <color name="nobel">#9b8b98</color>
+    <color name="cameo">#c9ada7</color>
+    <color name="vanilla_ice">#f2e9e4</color>
+
+    <color name="teal_blue">#335c67</color>
+    <color name="manz">#fff3b0</color>
+    <color name="gamboge">#e09f3e</color>
+    <color name="fire_engine_red">#9f2b2b</color>
+    <color name="blood_red">#540a0e</color>
+
 </resources>
