@@ -24,8 +24,8 @@ interface EntryDao {
     @Query("SELECT * FROM entrys ORDER BY RANDOM() LIMIT 3")
     suspend fun randomEntry(): List<EntryModel>
 
-    @Query("SELECT * FROM entrys WHERE type like '%' || :searchName || '%'")
-    suspend fun searchType(searchName: String): List<EntryModel>
+    @Query("SELECT * FROM entrys WHERE type like '%' || :searchType || '%'")
+    suspend fun searchType(searchType: String): List<EntryModel>
 
     @Query("SELECT * FROM entrys WHERE transaction_id =:transactionId")
     suspend fun getEntry(transactionId: Int): EntryModel
