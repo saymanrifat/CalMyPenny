@@ -1,5 +1,6 @@
 package com.ounicsoft.calmypenny.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,6 +23,8 @@ class HomeActivity : AppCompatActivity() {
         setCurrentFragment(overViewFragment)
         //Handle Bottom Navigation ClickListen
         handleBottomClickListener()
+        //Handle Add Entry Click Listen
+        goToAddEntryActivity()
 
 
     }
@@ -37,9 +40,16 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun setCurrentFragment(fragment: Fragment) =
+    private fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.home_HostFragment, fragment)
             commit()
         }
+    }
+
+    private fun goToAddEntryActivity() {
+        binding.btnAddEntryActivity.setOnClickListener {
+            startActivity(Intent(this, AddEntryActivity::class.java))
+        }
+    }
 }

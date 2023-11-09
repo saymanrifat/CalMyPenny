@@ -5,4 +5,6 @@
     <string name="str_over_view">Over View</string>
     <string name="str_budget">Budget</string>
     <string name="str_wallet">Wallet</string>
+    <string name="ed_amount_placeholder">0</string>
+    <string name="add_new_entry_placeholder">Add New Entry</string>
 </resources>
