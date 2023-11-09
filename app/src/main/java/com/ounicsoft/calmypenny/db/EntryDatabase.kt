@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.ounicsoft.calmypenny.model.Entry
+import com.ounicsoft.calmypenny.model.EntryModel
 import com.ounicsoft.calmypenny.dao.EntryDao
 
-@Database(entities = [Entry::class], version = 1)
+@Database(entities = [EntryModel::class], version = 1)
 abstract class EntryDatabase : RoomDatabase() {
     abstract fun getEntryDao(): EntryDao
 
