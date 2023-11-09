@@ -1,8 +1,10 @@
 package com.ounicsoft.calmypenny.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ounicsoft.calmypenny.R
 import com.ounicsoft.calmypenny.databinding.ActivityHomeBinding
@@ -10,12 +12,14 @@ import com.ounicsoft.calmypenny.view.home.BudgetFragment
 import com.ounicsoft.calmypenny.view.home.OverViewFragment
 import com.ounicsoft.calmypenny.view.home.WalletFragment
 
+
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private var overViewFragment: OverViewFragment = OverViewFragment()
     private var budgetFragment: BudgetFragment = BudgetFragment()
     private var walletFragment: WalletFragment = WalletFragment()
+    private lateinit var toast: Toast
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -25,6 +29,12 @@ class HomeActivity : AppCompatActivity() {
         handleBottomClickListener()
         //Handle Add Entry Click Listen
         goToAddEntryActivity()
+        //Handle Menu Click Listen
+        onMenuSelected()
+        // The Toolbar defined in the layout has the id "my_toolbar".
+        setSupportActionBar(binding.homeToolbar)
+        //Initialize Toast
+        toast = Toast(this)
 
 
     }
@@ -51,5 +61,17 @@ class HomeActivity : AppCompatActivity() {
         binding.btnAddEntryActivity.setOnClickListener {
             startActivity(Intent(this, AddEntryActivity::class.java))
         }
+    }
+
+    private fun onMenuSelected() {
+        binding.btnSettings.setOnClickListener {
+            showToast("Setting is Ok")
+        }
+    }
+
+    private fun showToast(text: String) {
+        toast.cancel()
+        toast = Toast.makeText(this, text, Toast.LENGTH_LONG)
+        toast.show()
     }
 }
