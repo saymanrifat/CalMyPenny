@@ -23,4 +23,9 @@
     <color name="fire_engine_red">#9f2b2b</color>
     <color name="blood_red">#540a0e</color>
 
+    <color name="grey">#aaa</color>
+    <color name="button_color">#1E573B</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="red">#F44336</color>
+
 </resources>

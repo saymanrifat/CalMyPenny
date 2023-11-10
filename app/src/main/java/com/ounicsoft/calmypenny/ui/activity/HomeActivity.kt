@@ -1,16 +1,15 @@
-package com.ounicsoft.calmypenny.view
+package com.ounicsoft.calmypenny.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ounicsoft.calmypenny.R
 import com.ounicsoft.calmypenny.databinding.ActivityHomeBinding
-import com.ounicsoft.calmypenny.view.home.BudgetFragment
-import com.ounicsoft.calmypenny.view.home.OverViewFragment
-import com.ounicsoft.calmypenny.view.home.WalletFragment
+import com.ounicsoft.calmypenny.ui.fragments.BudgetFragment
+import com.ounicsoft.calmypenny.ui.fragments.OverViewFragment
+import com.ounicsoft.calmypenny.ui.fragments.WalletFragment
 
 
 class HomeActivity : AppCompatActivity() {

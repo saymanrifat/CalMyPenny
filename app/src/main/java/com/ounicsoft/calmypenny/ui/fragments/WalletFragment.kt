@@ -1,4 +1,4 @@
-package com.ounicsoft.calmypenny.view.home
+package com.ounicsoft.calmypenny.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

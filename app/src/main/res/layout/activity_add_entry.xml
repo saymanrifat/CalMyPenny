@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/vanilla_ice"
     android:padding="20dp"
-    tools:context=".view.AddEntryActivity">
+    tools:context=".ui.activity.AddEntryActivity">
 
     <ImageButton
         android:id="@+id/saveEntry"

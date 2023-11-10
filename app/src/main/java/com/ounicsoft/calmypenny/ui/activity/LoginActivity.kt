@@ -1,4 +1,4 @@
-package com.ounicsoft.calmypenny.view
+package com.ounicsoft.calmypenny.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

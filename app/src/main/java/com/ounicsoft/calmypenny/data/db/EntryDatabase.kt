@@ -1,10 +1,11 @@
-package com.ounicsoft.calmypenny.db
+package com.ounicsoft.calmypenny.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.ounicsoft.calmypenny.model.EntryModel
+import com.ounicsoft.calmypenny.ui.utils.Constants.SQLITE_FILE_NAME
+import com.ounicsoft.calmypenny.data.model.EntryModel
 import com.ounicsoft.calmypenny.dao.EntryDao
 
 @Database(entities = [EntryModel::class], version = 1)
@@ -20,8 +21,8 @@ abstract class EntryDatabase : RoomDatabase() {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
                         EntryDatabase::class.java,
-                        "contact.sqlite"
-                    ).createFromAsset("contact.sqlite").build()
+                        SQLITE_FILE_NAME
+                    ).createFromAsset(SQLITE_FILE_NAME).build()
                 }
             }
             return INSTANCE

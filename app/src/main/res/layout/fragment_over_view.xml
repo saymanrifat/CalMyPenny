@@ -1,26 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.home.OverViewFragment">
+    android:layout_height="wrap_content"
+    tools:context=".ui.fragments.OverViewFragment">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ir.mahozad.android.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30sp" />
+
+        <View
+            android:id="@+id/sample_view_line"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@id/pieChart"
+            android:layout_marginTop="10dp"
+            android:background="@color/cameo" />
+
+        <LinearLayout
+            android:id="@+id/waller_Layout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@id/sample_view_line">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RecyclerView_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_below="@id/waller_Layout">
 
-            <TextView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RecyclerView_transactions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Over View Screen" />
-
+                android:layout_marginTop="10dp" />
         </LinearLayout>
-    </ScrollView>
-
-
-</FrameLayout>
+    </RelativeLayout>
+</ScrollView>
