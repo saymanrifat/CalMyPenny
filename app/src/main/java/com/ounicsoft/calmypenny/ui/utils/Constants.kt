@@ -2,7 +2,7 @@ package com.ounicsoft.calmypenny.ui.utils
 
 object Constants {
 
-    const val SQLITE_FILE_NAME = "contact.sqlite"
+    const val SQLITE_FILE_NAME = "transaction.sqlite"
     const val DB_TABLE_NAME = "entrys"
     const val TRANSACTION_ID = "transaction_id"
     const val AMOUNT = "amount"
