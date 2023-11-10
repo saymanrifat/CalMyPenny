@@ -21,10 +21,10 @@ class TransactionAdapter(private val dataSet: Array<String>) :
             textView = view.findViewById(R.id.textView)
         }
     }
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.text_row_item, viewGroup, false)
 
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+        //  val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.text_row_item, viewGroup, false)
+        var view = viewGroup
         return ViewHolder(view)
     }
 
