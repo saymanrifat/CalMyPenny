@@ -1,4 +1,4 @@
-package com.ounicsoft.calmypenny.dao
+package com.ounicsoft.calmypenny.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete

@@ -15,10 +15,16 @@
             android:id="@+id/pieChart"
             android:layout_width="300dp"
             android:layout_height="300dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:padding="15dp"
             app:centerBackgroundColor="#faf"
             app:centerBackgroundStatus="disabled"
+            app:labelsColor="@color/c_black"
             app:labelType="outside"
             app:labelsSize="12sp"
+            app:legendsColor="@color/c_black"
             app:legendArrangement="horizontal"
             app:legendBoxAlignment="center"
             app:legendBoxBorderStatus="disabled"
@@ -45,6 +51,7 @@
             android:layout_height="5dp"
             android:layout_below="@id/pieChart"
             android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="20dp"
             android:background="@color/cameo" />
 
         <LinearLayout
