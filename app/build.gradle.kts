@@ -39,9 +39,6 @@ android {
     }
 }
 
-val lifecycle_version = "2.1.0"
-val room_version = "2.2.3"
-
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -58,11 +55,6 @@ dependencies {
     //Room
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10")
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("com.google.android.material:material:1.2.0-alpha03")
-    implementation("androidx.core:core-ktx:1.1.0")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation("androidx.lifecycle:lifecycle-extensions:2.1.0")
     implementation("androidx.room:room-runtime:2.2.3")
     implementation("io.reactivex.rxjava2:rxjava:2.2.16")

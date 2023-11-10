@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ounicsoft.calmypenny.ui.utils.Constants.SQLITE_FILE_NAME
 import com.ounicsoft.calmypenny.data.model.EntryModel
-import com.ounicsoft.calmypenny.dao.EntryDao
+import com.ounicsoft.calmypenny.data.dao.EntryDao
 
 @Database(entities = [EntryModel::class], version = 1)
 abstract class EntryDatabase : RoomDatabase() {

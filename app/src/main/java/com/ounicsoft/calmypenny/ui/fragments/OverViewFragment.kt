@@ -23,11 +23,36 @@ class OverViewFragment : Fragment() {
 
     private fun pieChart() {
         binding.pieChart.slices = listOf(
-            PieChart.Slice(0.2f, Color.BLUE),
-            PieChart.Slice(0.4f, Color.MAGENTA),
-            PieChart.Slice(0.3f, Color.YELLOW),
-            PieChart.Slice(0.1f, Color.CYAN)
+            PieChart.Slice(
+                0.30f,
+                Color.rgb(120, 181, 0),
+                Color.rgb(149, 224, 0),
+                legend = "Food"
+            ),
+            PieChart.Slice(
+                0.20f,
+                Color.rgb(204, 168, 0),
+                Color.rgb(249, 228, 0),
+                legend = "Transportation"
+            ),
+            PieChart.Slice(
+                0.17f,
+                Color.rgb(255, 4, 4),
+                Color.rgb(255, 72, 86),
+                legend = "Entertainment"
+            ),
+            PieChart.Slice(
+                0.20f,
+                Color.rgb(0, 162, 216),
+                Color.rgb(31, 199, 255),
+                legend = "Others"
+            ),
+            PieChart.Slice(
+                0.13f,
+                Color.rgb(160, 165, 170),
+                Color.rgb(175, 180, 185),
+                legend = "Available"
+            ),
         )
     }
-
 }

@@ -1,4 +1,4 @@
-package com.ounicsoft.calmypenny.dao
+package com.ounicsoft.calmypenny.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -14,13 +14,13 @@ interface EntryDao {
     suspend fun allEntry(): List<EntryModel>
 
     @Insert
-    suspend fun addEntry(person: EntryModel)
+    suspend fun addEntry(transaction: EntryModel)
 
     @Update
-    suspend fun updateEntry(person: EntryModel)
+    suspend fun updateEntry(transaction: EntryModel)
 
     @Delete
-    suspend fun deleteEntry(person: EntryModel)
+    suspend fun deleteEntry(transaction: EntryModel)
 
     @Query("SELECT * FROM ${Constants.DB_TABLE_NAME} WHERE type like '%' || :searchType || '%'")
     suspend fun searchType(searchType: String): List<EntryModel>
