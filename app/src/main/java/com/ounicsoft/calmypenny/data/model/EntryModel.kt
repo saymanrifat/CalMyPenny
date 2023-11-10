@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.ounicsoft.calmypenny.ui.utils.Constants
 
-@Entity(tableName = Constants.DB_TABLE_NAME)
+@Entity(tableName = Constants.DB_TRANSACTION_TABLE_NAME)
 data class EntryModel(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = Constants.TRANSACTION_ID) var transactionId: Int,

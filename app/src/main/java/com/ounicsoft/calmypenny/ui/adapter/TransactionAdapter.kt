@@ -1,37 +1,60 @@
 package com.ounicsoft.calmypenny.ui.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.ounicsoft.calmypenny.R
+import com.ounicsoft.calmypenny.data.model.EntryModel
+import com.ounicsoft.calmypenny.databinding.TransactionCustomViewBinding
 
-class TransactionAdapter(private val dataSet: Array<String>) :
+class TransactionAdapter(private val dataSet: List<EntryModel>) :
     RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder)
-     */
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
+    class ViewHolder(binding: TransactionCustomViewBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        var time: TextView
+        var cause: TextView
+        var amount: TextView
 
         init {
-            textView = view.findViewById(R.id.textView)
+            time = binding.time
+            cause = binding.type
+            amount = binding.amount
         }
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        //  val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.text_row_item, viewGroup, false)
-        var view = viewGroup
-        return ViewHolder(view)
+        val binding = TransactionCustomViewBinding.inflate(
+            LayoutInflater.from(viewGroup.context),
+            viewGroup,
+            false
+        )
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.textView.text = dataSet[position]
+        val data = dataSet[position]
+        val transactionType = data.type
+        viewHolder.time.text = data.transactionTime
+        viewHolder.cause.text = data.cause
+        viewHolder.amount.text = transactionTypeSign(data.type) + " " + data.amount.toString()
+        viewHolder.amount.setTextColor(transactionTypeColor(transactionType))
     }
 
     override fun getItemCount() = dataSet.size
 
+    private fun transactionTypeColor(int: Int): Int = when (int) {
+        1 -> Color.RED // (Expense)
+        0 -> Color.BLACK // (Transfer)
+        2 -> Color.GREEN // (Income)
+        else -> 0
+    }
+
+    private fun transactionTypeSign(int: Int): String = when (int) {
+        1 -> "-" // (Expense)
+        0 -> "=" // (Transfer)
+        2 -> "+" // (Income)
+        else -> "null"
+    }
 }
