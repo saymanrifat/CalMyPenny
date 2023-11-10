@@ -35,7 +35,6 @@ class OverViewFragment : Fragment() {
                 Color.rgb(249, 228, 0),
                 legend = "Transportation"
             ),
-
             PieChart.Slice(
                 0.17f,
                 Color.rgb(255, 4, 4),
@@ -54,8 +53,6 @@ class OverViewFragment : Fragment() {
                 Color.rgb(175, 180, 185),
                 legend = "Available"
             ),
-
-            )
+        )
     }
-
 }

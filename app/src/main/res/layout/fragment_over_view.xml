@@ -18,7 +18,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:padding="15dp"
+            android:layout_margin="15dp"
             app:centerBackgroundColor="#faf"
             app:centerBackgroundStatus="disabled"
             app:labelsColor="@color/c_black"
