@@ -30,7 +30,6 @@ class OverViewFragment : Fragment() {
         pieChart()
         //Transaction RecyclerView Setup
         recyclerViewSetupTransaction()
-
         //Wallet RecyclerView Setup
         recyclerViewSetupWallet()
 
