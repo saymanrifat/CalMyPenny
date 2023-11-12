@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.ounicsoft.calmypenny"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.ounicsoft.calmypenny"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -53,12 +53,12 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //Room
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.1.0")
-    implementation("androidx.room:room-runtime:2.2.3")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.16")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
+// Room
+    implementation("androidx.room:room-runtime:2.6.0")
+    kapt("androidx.room:room-compiler:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0") // Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2") // LifecycleScope
+
     //ThirdParty Pie Chart
     implementation("ir.mahozad.android:pie-chart:0.7.0")
 }

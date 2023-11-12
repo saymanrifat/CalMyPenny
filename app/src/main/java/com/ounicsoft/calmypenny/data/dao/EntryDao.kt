@@ -25,8 +25,6 @@ interface EntryDao {
     @Query("SELECT * FROM ${Constants.DB_TRANSACTION_TABLE_NAME} WHERE type like '%' || :searchType || '%'")
     suspend fun searchType(searchType: String): List<EntryModel>
 
-    @Query("SELECT * FROM ${Constants.DB_TRANSACTION_TABLE_NAME} WHERE transaction_id =:transactionId")
-    suspend fun getEntry(transactionId: Int): EntryModel
 
     @Query("SELECT count(*) FROM ${Constants.DB_TRANSACTION_TABLE_NAME} WHERE amount=:amount")
     suspend fun controlEntry(amount: String): Int
