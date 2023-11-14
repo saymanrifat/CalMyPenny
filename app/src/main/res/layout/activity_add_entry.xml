@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
 
         android:background="@drawable/save_btn_background"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_save_tick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,11 +37,25 @@
         android:background="@drawable/ed_background"
         android:ems="10"
         android:hint="@string/ed_amount_placeholder"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         android:textDirection="rtl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/ed_expense_category_text"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/ed_background"
+        android:ems="10"
+        android:hint="@string/ed_expense_category_placeholder"
+        android:inputType="text"
+        android:textDirection="rtl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_amount_text" />
 
     <LinearLayout
         android:id="@+id/spinner_holder"
@@ -48,14 +63,27 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/ed_amount_text"
+        app:layout_constraintTop_toBottomOf="@+id/ed_expense_category_text"
         tools:layout_editor_absoluteX="20dp">
 
-        <Spinner
-            android:id="@+id/sp_select_wallet_from"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="From Wallet: " />
+
+            <Spinner
+                android:id="@+id/sp_select_wallet_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/transferSelector"
@@ -72,11 +100,24 @@
                 android:src="@drawable/ic_transfer_money" />
 
 
-            <Spinner
-                android:id="@+id/sp_select_wallet_to"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="To Wallet: " />
+
+                <Spinner
+                    android:id="@+id/sp_select_wallet_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

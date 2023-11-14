@@ -6,4 +6,20 @@
     <string name="str_wallet">Wallet</string>
     <string name="ed_amount_placeholder">0</string>
     <string name="add_new_entry_placeholder">Add New Entry</string>
+    <string name="ed_expense_category_placeholder">Cause</string>
+    <string-array name="expanse_category_array">
+        <item>Food</item>
+        <item>Transport</item>
+        <item>Utility</item>
+        <item>Drink</item>
+        <item>Entertainment</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="sample_wallet_array">
+        <item>Cash</item>
+        <item>bKash</item>
+        <item>Islami bank</item>
+        <item>Brac Bank</item>
+    </string-array>
 </resources>
