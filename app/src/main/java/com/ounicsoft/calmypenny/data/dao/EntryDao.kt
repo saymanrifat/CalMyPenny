@@ -1,24 +1,23 @@
 package com.ounicsoft.calmypenny.data.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import com.ounicsoft.calmypenny.ui.utils.Constants
 import com.ounicsoft.calmypenny.data.model.EntryModel
 
 @Dao
 interface EntryDao {
-    @Query("SELECT * FROM ${Constants.DB_TRANSACTION_TABLE_NAME}")
-    suspend fun allEntry(): List<EntryModel>
-
-    @Insert
-    suspend fun addEntry(transaction: EntryModel)
-
-    @Update
-    suspend fun updateEntry(transaction: EntryModel)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(entryModel: EntryModel)
 
     @Delete
-    suspend fun deleteEntry(transaction: EntryModel)
+    suspend fun delete(entryModel: EntryModel)
+
+    @Query("SELECT * from ${Constants.DB_TRANSACTION_TABLE_NAME}")
+    fun getAllEntry(): LiveData<List<EntryModel>>
+
 }

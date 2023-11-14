@@ -2,7 +2,7 @@ package com.ounicsoft.calmypenny.ui.utils
 
 object Constants {
     // Room Database
-    const val SQLITE_FILE_NAME = "transaction.sqlite"
+    const val SQLITE_FILE_NAME = "transaction-sqlite"
 
     // Transaction Key
     const val DB_TRANSACTION_TABLE_NAME = "entrys"
@@ -10,7 +10,7 @@ object Constants {
     const val AMOUNT = "amount"
     const val TYPE = "type" // (0=Transfer, 1= Minus, 2= Plus)
     const val TRANSACTION_TIME = "transaction_time"
-    const val CAUSE = "transaction_type"
+    const val CATEGORY = "transaction_category"
 
     // Wallet Key
     const val DB_WALLET_TABLE_NAME = "transaction_time"

@@ -37,7 +37,7 @@ class TransactionAdapter(private val dataSet: List<EntryModel>) :
         val data = dataSet[position]
         val transactionType = data.type
         viewHolder.time.text = data.transactionTime
-        viewHolder.cause.text = data.cause
+        viewHolder.cause.text = data.category
         viewHolder.amount.text = "${transactionTypeSign(data.type)} ${data.amount.toString()}"
         viewHolder.amount.setTextColor(transactionTypeColor(transactionType))
     }

@@ -9,18 +9,27 @@ import com.ounicsoft.calmypenny.data.model.EntryModel
 import com.ounicsoft.calmypenny.data.dao.EntryDao
 import com.ounicsoft.calmypenny.ui.utils.Constants.DB_TRANSACTION_TABLE_NAME
 
-@Database(entities = [EntryModel::class], version = 1, exportSchema = false)
+@Database(entities = arrayOf(EntryModel::class), version = 1)
 abstract class EntryDatabase : RoomDatabase() {
-    abstract fun entryDao(): EntryDao
+    abstract fun getEntryDao(): EntryDao
 
-    // a boiler plate code to instantiate room database
     companion object {
         @Volatile
-        private var instance: EntryDatabase? = null
-        fun getInstance(context: Context): EntryDatabase = instance ?: synchronized(this) {
-            Room.databaseBuilder(
-                context.applicationContext, EntryDatabase::class.java, SQLITE_FILE_NAME
-            ).fallbackToDestructiveMigration().build()
+        private var INSTANCE: EntryDatabase? = null
+
+        fun getDatabase(context: Context): EntryDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    EntryDatabase::class.java,
+                    SQLITE_FILE_NAME
+                ).build()
+
+                INSTANCE = instance
+                instance
+            }
         }
     }
+
 }
+
