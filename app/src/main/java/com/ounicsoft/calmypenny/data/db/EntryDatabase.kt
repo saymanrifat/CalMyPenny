@@ -7,25 +7,20 @@ import androidx.room.RoomDatabase
 import com.ounicsoft.calmypenny.ui.utils.Constants.SQLITE_FILE_NAME
 import com.ounicsoft.calmypenny.data.model.EntryModel
 import com.ounicsoft.calmypenny.data.dao.EntryDao
+import com.ounicsoft.calmypenny.ui.utils.Constants.DB_TRANSACTION_TABLE_NAME
 
-@Database(entities = [EntryModel::class], version = 1)
+@Database(entities = [EntryModel::class], version = 1, exportSchema = false)
 abstract class EntryDatabase : RoomDatabase() {
-    abstract fun getEntryDao(): EntryDao
+    abstract fun entryDao(): EntryDao
 
+    // a boiler plate code to instantiate room database
     companion object {
-        private var INSTANCE: EntryDatabase? = null
-
-        fun accessToDatabase(context: Context): EntryDatabase? {
-            if (INSTANCE == null) {
-                synchronized(EntryDatabase::class) {
-                    INSTANCE = Room.databaseBuilder(
-                        context.applicationContext,
-                        EntryDatabase::class.java,
-                        SQLITE_FILE_NAME
-                    ).createFromAsset(SQLITE_FILE_NAME).build()
-                }
-            }
-            return INSTANCE
+        @Volatile
+        private var instance: EntryDatabase? = null
+        fun getInstance(context: Context): EntryDatabase = instance ?: synchronized(this) {
+            Room.databaseBuilder(
+                context.applicationContext, EntryDatabase::class.java, SQLITE_FILE_NAME
+            ).fallbackToDestructiveMigration().build()
         }
     }
 }
