@@ -7,17 +7,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ounicsoft.calmypenny.data.model.EntryModel
+import com.ounicsoft.calmypenny.data.model.WalletModel
 import com.ounicsoft.calmypenny.databinding.FragmentOverViewBinding
 import com.ounicsoft.calmypenny.ui.activity.AddEntryActivity
 import com.ounicsoft.calmypenny.ui.adapter.TransactionAdapter
+import com.ounicsoft.calmypenny.ui.adapter.WalletHomeScreenAdapter
+import com.ounicsoft.calmypenny.viewmodel.WalletViewModel
 import ir.mahozad.android.PieChart
 
 class OverViewFragment : Fragment() {
     private lateinit var binding: FragmentOverViewBinding
     private lateinit var dataSetTransaction: List<EntryModel>
     private lateinit var transactionAdapter: TransactionAdapter
+
+    private lateinit var walletAdapter: WalletHomeScreenAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var walletViewModel: WalletViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -99,7 +109,16 @@ class OverViewFragment : Fragment() {
 
 
     private fun recyclerViewSetupWallet() {
-
+        recyclerView = binding.recyclerViewWallet
+        walletAdapter = WalletHomeScreenAdapter(requireActivity(), ArrayList<WalletModel>())
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            adapter = walletAdapter
+        }
+        walletViewModel = ViewModelProvider(this).get(WalletViewModel::class.java)
+        walletViewModel.getAllWallet(requireActivity()).observe(requireActivity(), Observer {
+            walletAdapter.setData(it as ArrayList<WalletModel>)
+        })
     }
 
 

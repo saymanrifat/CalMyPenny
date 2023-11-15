@@ -6,11 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ounicsoft.calmypenny.data.model.WalletModel
 import com.ounicsoft.calmypenny.databinding.WalletCustomViewBinding
-import com.ounicsoft.calmypenny.databinding.WalletListItemCustomBinding
 
 class WalletHomeScreenAdapter(
     private val context: Context,
-    var walletList: ArrayList<WalletModel>,
+    private var walletList: ArrayList<WalletModel>,
 ) :
     RecyclerView.Adapter<WalletHomeScreenAdapter.ViewHolder>() {
 
@@ -26,19 +25,21 @@ class WalletHomeScreenAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = walletList[position]
         holder.walletName.text = item.walletName
+        holder.walletBalance.text = item.totalAmount.toString()
     }
 
     override fun getItemCount(): Int {
         return walletList.size
     }
 
-    fun setData(userList: ArrayList<WalletModel>) {
-        this.walletList = userList
+    fun setData(walletList: ArrayList<WalletModel>) {
+        this.walletList = walletList
         notifyDataSetChanged()
     }
 
     inner class ViewHolder(binding: WalletCustomViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val walletName = binding.walletName
+        val walletBalance = binding.tAmount
     }
 }
