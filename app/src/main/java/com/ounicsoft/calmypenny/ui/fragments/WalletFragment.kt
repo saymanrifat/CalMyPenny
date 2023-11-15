@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import com.ounicsoft.calmypenny.databinding.DialogAddNewWalletBinding
 import com.ounicsoft.calmypenny.ui.adapter.WalletListAdapter
+import com.ounicsoft.calmypenny.ui.utils.MyToast
 
 
 class WalletFragment : Fragment(), WalletListAdapter.WalletClickListener {
@@ -85,13 +86,13 @@ class WalletFragment : Fragment(), WalletListAdapter.WalletClickListener {
             Toast.makeText(context, "Data added successfully..", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         } else {
-            Toast.makeText(context, "Please fill all the fields..", Toast.LENGTH_SHORT)
-                .show()
+
+            MyToast(requireContext(), "Please fill all the fields..").showToast()
         }
     }
 
     override fun onClick(walletEntry: WalletModel) {
-        Toast.makeText(context, "OnClick", Toast.LENGTH_SHORT).show()
+        MyToast(requireContext(), "Updated").showToast()
     }
 
     override fun onLongClick(walletEntry: WalletModel) {
@@ -107,7 +108,7 @@ class WalletFragment : Fragment(), WalletListAdapter.WalletClickListener {
                     requireActivity(),
                     walletEntry
                 )
-                Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show()
+                MyToast(requireContext(), "Deleted").showToast()
             }
         val dialog: AlertDialog = builder.create()
         dialog.show()
