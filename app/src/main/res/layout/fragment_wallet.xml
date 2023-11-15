@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.WalletFragment">
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_addWalletActivity"
         android:layout_width="wrap_content"
@@ -17,7 +16,6 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_add_entry"
         app:backgroundTint="@color/cameo" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_walletList"
         android:layout_width="match_parent"

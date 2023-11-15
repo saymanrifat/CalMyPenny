@@ -11,6 +11,9 @@ class WalletViewModel : ViewModel() {
     fun insert(context: Context, walletModel: WalletModel) {
         WalletRepository.insert(context, walletModel)
     }
+    fun delete(context: Context, walletModel: WalletModel) {
+        WalletRepository.delete(context, walletModel)
+    }
 
     fun getAllWallet(context: Context): LiveData<List<WalletModel>> {
         return WalletRepository.getAllWallet(context)

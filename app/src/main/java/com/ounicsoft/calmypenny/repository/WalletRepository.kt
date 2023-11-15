@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class WalletRepository {
 
     companion object {
-        var walletDatabase: WalletDatabase? = null
+        private var walletDatabase: WalletDatabase? = null
 
         private fun intialiseDB(context: Context): WalletDatabase? {
             return WalletDatabase.getInstance(context)!!
@@ -22,6 +22,14 @@ class WalletRepository {
 
             CoroutineScope(IO).launch {
                 walletDatabase!!.walletDao().insert(walletModel)
+            }
+        }
+
+        fun delete(context: Context, walletModel: WalletModel) {
+            walletDatabase = intialiseDB(context)
+
+            CoroutineScope(IO).launch {
+                walletDatabase!!.walletDao().delete(walletModel)
             }
         }
 

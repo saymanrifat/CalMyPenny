@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/cameo</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:fontFamily">@font/kanit_font</item>
     </style>
 </resources>

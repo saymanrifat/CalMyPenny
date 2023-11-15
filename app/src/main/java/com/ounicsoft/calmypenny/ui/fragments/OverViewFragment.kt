@@ -9,19 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ounicsoft.calmypenny.data.model.EntryModel
-import com.ounicsoft.calmypenny.data.model.WalletModel
 import com.ounicsoft.calmypenny.databinding.FragmentOverViewBinding
 import com.ounicsoft.calmypenny.ui.activity.AddEntryActivity
 import com.ounicsoft.calmypenny.ui.adapter.TransactionAdapter
-import com.ounicsoft.calmypenny.ui.adapter.WalletHomeScreenAdapter
 import ir.mahozad.android.PieChart
 
 class OverViewFragment : Fragment() {
     private lateinit var binding: FragmentOverViewBinding
     private lateinit var dataSetTransaction: List<EntryModel>
-    private lateinit var dataSetWallet: List<WalletModel>
     private lateinit var transactionAdapter: TransactionAdapter
-    private lateinit var walletAdapter: WalletHomeScreenAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -105,7 +101,6 @@ class OverViewFragment : Fragment() {
     private fun recyclerViewSetupWallet() {
 
     }
-
 
 
     private fun goToAddEntryActivity() {

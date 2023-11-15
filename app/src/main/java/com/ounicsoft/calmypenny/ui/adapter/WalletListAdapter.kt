@@ -28,6 +28,7 @@ class WalletListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = walletList[position]
         holder.walletName.text = item.walletName
+        holder.tvBalance.text = item.totalAmount.toString()
         holder.layoutBtn.setOnClickListener() {
             listener.onClick(walletList[holder.adapterPosition])
         }
@@ -50,6 +51,7 @@ class WalletListAdapter(
         RecyclerView.ViewHolder(binding.root) {
         val walletName = binding.walletName
         val layoutBtn = binding.layoutBtn
+        val tvBalance = binding.tvBalance
     }
 
     interface WalletClickListener {
