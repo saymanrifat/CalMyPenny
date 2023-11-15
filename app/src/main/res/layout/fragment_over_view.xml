@@ -1,82 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ui.fragments.OverViewFragment">
 
-    <RelativeLayout
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_addEntryActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_add_entry"
+        app:backgroundTint="@color/cameo" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
 
-        <ir.mahozad.android.PieChart
-            android:id="@+id/pieChart"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="15dp"
-            app:centerBackgroundColor="#faf"
-            app:centerBackgroundStatus="disabled"
-            app:labelType="outside"
-            app:labelsColor="@color/c_black"
-            app:labelsSize="12sp"
-            app:legendArrangement="horizontal"
-            app:legendBoxAlignment="center"
-            app:legendBoxBorderStatus="disabled"
-            app:legendBoxPadding="8dp"
-            app:legendIconsMargin="4dp"
-            app:legendPosition="bottom"
-            app:legendStatus="enabled"
-            app:legendTitleMargin="10dp"
-            app:legendsAlignment="center"
-            app:legendsColor="@color/c_black"
-            app:legendsMargin="16dp"
-            app:legendsPercentageMargin="4dp"
-            app:legendsPercentageSize="12sp"
-            app:legendsPercentageStatus="enabled"
-            app:legendsSize="12sp"
-            app:legendsTitle="Legends"
-            app:legendsTitleAlignment="center"
-            app:legendsTitleSize="14sp"
-            app:legendsWrapping="wrap"
-            app:startAngle="250" />
 
-        <View
-            android:id="@+id/sample_view_line"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_below="@id/pieChart"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/cameo" />
-
-        <LinearLayout
-            android:id="@+id/waller_Layout"
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:layout_below="@id/sample_view_line"
-            android:layout_marginTop="10dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_wallet"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/waller_Layout">
+            android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_transactions"
+
+            <ir.mahozad.android.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="15dp"
+                app:centerBackgroundColor="#faf"
+                app:centerBackgroundStatus="disabled"
+                app:labelType="outside"
+                app:labelsColor="@color/c_black"
+                app:labelsSize="12sp"
+                app:legendArrangement="horizontal"
+                app:legendBoxAlignment="center"
+                app:legendBoxBorderStatus="disabled"
+                app:legendBoxPadding="8dp"
+                app:legendIconsMargin="4dp"
+                app:legendPosition="bottom"
+                app:legendStatus="enabled"
+                app:legendTitleMargin="10dp"
+                app:legendsAlignment="center"
+                app:legendsColor="@color/c_black"
+                app:legendsMargin="16dp"
+                app:legendsPercentageMargin="4dp"
+                app:legendsPercentageSize="12sp"
+                app:legendsPercentageStatus="enabled"
+                app:legendsSize="12sp"
+                app:legendsTitle="Legends"
+                app:legendsTitleAlignment="center"
+                app:legendsTitleSize="14sp"
+                app:legendsWrapping="wrap"
+                app:startAngle="250" />
+
+            <View
+                android:id="@+id/sample_view_line"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/pieChart"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/cameo" />
+
+            <LinearLayout
+                android:id="@+id/waller_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_below="@id/sample_view_line"
+                android:layout_marginTop="10dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_wallet"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
-        </LinearLayout>
-    </RelativeLayout>
-</ScrollView>
+                android:layout_below="@id/waller_Layout">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_transactions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

@@ -1,6 +1,5 @@
 package com.ounicsoft.calmypenny.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +26,6 @@ class HomeActivity : AppCompatActivity() {
         //Handle Bottom Navigation ClickListen
         handleBottomClickListener()
         //Handle Add Entry Click Listen
-        goToAddEntryActivity()
         //Handle Menu Click Listen
         onMenuSelected()
         // The Toolbar defined in the layout has the id "my_toolbar".
@@ -53,12 +51,6 @@ class HomeActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.home_HostFragment, fragment)
             commit()
-        }
-    }
-
-    private fun goToAddEntryActivity() {
-        binding.btnAddEntryActivity.setOnClickListener {
-            startActivity(Intent(this, AddEntryActivity::class.java))
         }
     }
 

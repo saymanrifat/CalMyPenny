@@ -4,13 +4,17 @@
     android:layout_height="70dp">
 
     <LinearLayout
+        android:id="@+id/layout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@color/cameo"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="10dp">
 
         <TextView
+            android:id="@+id/walletName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cash"

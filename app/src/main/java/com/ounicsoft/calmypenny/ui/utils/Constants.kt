@@ -2,7 +2,8 @@ package com.ounicsoft.calmypenny.ui.utils
 
 object Constants {
     // Room Database
-    const val SQLITE_FILE_NAME = "transaction-sqlite"
+    const val TRANSACTION_SQLITE_FILE_NAME = "transaction_sqlite"
+    const val WALLET_SQLITE_FILE_NAME = "wallet_sqlite"
 
     // Transaction Key
     const val DB_TRANSACTION_TABLE_NAME = "entrys"
