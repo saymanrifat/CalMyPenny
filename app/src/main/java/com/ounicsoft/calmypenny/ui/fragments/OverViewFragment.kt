@@ -33,7 +33,7 @@ class OverViewFragment : Fragment() {
         //Transaction RecyclerView Setup
         recyclerViewSetupTransaction()
         //Wallet RecyclerView Setup
-        //        recyclerViewSetupWallet()
+        recyclerViewSetupWallet()
         goToAddEntryActivity()
 
 
@@ -102,29 +102,15 @@ class OverViewFragment : Fragment() {
     }
 
 
-//    private fun recyclerViewSetupWallet() {
-//        sampleDataWallet()
-//        val recyclerViewWallet = binding.recyclerViewWallet
-//        recyclerViewWallet.layoutManager =
-//            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-//        walletAdapter = WalletHomeScreenAdapter(dataSetWallet)
-//        recyclerViewWallet.adapter = walletAdapter
-//    }
-//
-//    private fun sampleDataWallet() {
-//        dataSetWallet = listOf(
-//            WalletModel(1, "Cash", 15.50, Color.RED),
-//            WalletModel(2, "bKash", 25.80, Color.BLUE),
-//            WalletModel(3, "Brac", 30.25, Color.GREEN),
-//            WalletModel(4, "Dbbl", 12.75, Color.CYAN),
-//        )
-//    }
+    private fun recyclerViewSetupWallet() {
+
+    }
+
+
 
     private fun goToAddEntryActivity() {
         binding.btnAddEntryActivity.setOnClickListener {
             startActivity(Intent(context, AddEntryActivity::class.java))
         }
     }
-
-
 }

@@ -12,22 +12,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ounicsoft.calmypenny.data.db.WalletDatabase
 import com.ounicsoft.calmypenny.data.model.WalletModel
 import com.ounicsoft.calmypenny.databinding.FragmentWalletBinding
-import com.ounicsoft.calmypenny.ui.adapter.WalletHomeScreenAdapter
 import com.ounicsoft.calmypenny.viewmodel.WalletViewModel
-
 import android.text.TextUtils
-
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-
 import androidx.lifecycle.Observer
 import com.ounicsoft.calmypenny.databinding.DialogBinding
+import com.ounicsoft.calmypenny.ui.adapter.WalletListAdapter
 
 
-class WalletFragment : Fragment() {
+class WalletFragment : Fragment(), WalletListAdapter.WalletClickListener {
 
     private lateinit var binding: FragmentWalletBinding
-    private lateinit var walletAdapter: WalletHomeScreenAdapter
+    private lateinit var walletAdapter: WalletListAdapter
     private lateinit var walletDb: WalletDatabase
     private lateinit var recyclerView: RecyclerView
     private lateinit var walletViewModel: WalletViewModel
@@ -48,7 +45,7 @@ class WalletFragment : Fragment() {
 
 
         recyclerView = binding.recyclerViewWalletList
-        walletAdapter = WalletHomeScreenAdapter(requireActivity(), ArrayList<WalletModel>())
+        walletAdapter = WalletListAdapter(requireActivity(), ArrayList<WalletModel>(), this)
         recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
@@ -96,4 +93,13 @@ class WalletFragment : Fragment() {
                 .show()
         }
     }
+
+    override fun onClick(walletEntry: WalletModel) {
+        Toast.makeText(context, "OnClick", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onLongClick(walletEntry: WalletModel) {
+        Toast.makeText(context, "LongClick", Toast.LENGTH_SHORT).show()
+    }
+
 }
