@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ounicsoft.calmypenny.data.model.WalletModel
+import com.ounicsoft.calmypenny.databinding.WalletCustomViewBinding
 import com.ounicsoft.calmypenny.databinding.WalletListItemCustomBinding
 
 class WalletHomeScreenAdapter(
@@ -18,7 +19,7 @@ class WalletHomeScreenAdapter(
         parent: ViewGroup, viewType: Int
     ): WalletHomeScreenAdapter.ViewHolder {
         val binding =
-            WalletListItemCustomBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            WalletCustomViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -36,7 +37,7 @@ class WalletHomeScreenAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(binding: WalletListItemCustomBinding) :
+    inner class ViewHolder(binding: WalletCustomViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val walletName = binding.walletName
     }

@@ -17,8 +17,8 @@ interface WalletDao {
     @Delete
     suspend fun delete(walletModel: WalletModel)
 
-//    @Query("UPDATE ${Constants.DB_WALLET_TABLE_NAME} set title = :title, note = :note where id = :id")
-//    suspend fun update(id: Int?, title: String?, note: String?)
+    @Query("UPDATE ${Constants.DB_WALLET_TABLE_NAME} set ${Constants.WALLET_NAME} = :walletName, ${Constants.TOTAL_AMOUNT} = :totalBalance where ${Constants.WALLET_ID} = :walletId")
+    suspend fun update(walletId: Int?, walletName: String?, totalBalance: Double?)
 
     @Query("SELECT * from ${Constants.DB_WALLET_TABLE_NAME}")
     fun getAllWallet(): LiveData<List<WalletModel>>

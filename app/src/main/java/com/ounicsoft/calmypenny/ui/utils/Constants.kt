@@ -14,8 +14,8 @@ object Constants {
     const val CATEGORY = "transaction_category"
 
     // Wallet Key
-    const val DB_WALLET_TABLE_NAME = "transaction_time"
-    const val WALLET_ID = "wallet_id"
+    const val DB_WALLET_TABLE_NAME = "wallet_table"
+    const val WALLET_ID = "walletId"
     const val WALLET_NAME = "wallet_name"
     const val TOTAL_AMOUNT = "total_amount"
     const val WALLET_COLOR = "wallet_color"
