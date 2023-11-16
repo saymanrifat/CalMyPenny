@@ -134,16 +134,16 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/t_btn_plusAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Plus(+)" />
-
-            <RadioButton
                 android:id="@+id/t_btn_minusAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Minus(-)" />
+
+            <RadioButton
+                android:id="@+id/t_btn_plusAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plus(+)" />
 
             <RadioButton
                 android:id="@+id/t_btn_transferAmount"

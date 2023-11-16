@@ -1,5 +1,6 @@
 package com.ounicsoft.calmypenny.ui.adapter
 
+import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,14 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ounicsoft.calmypenny.data.model.TransactionModel
+import com.ounicsoft.calmypenny.data.model.WalletModel
 import com.ounicsoft.calmypenny.databinding.TransactionListViewBinding
 
-class TransactionAdapter(private val dataSet: List<TransactionModel>) :
+class TransactionAdapter(
+    private val context: Context,
+    var transactionList: ArrayList<TransactionModel>,
+//    val listener: WalletListAdapter.WalletClickListener
+) :
     RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
 
     class ViewHolder(binding: TransactionListViewBinding) :
@@ -42,7 +48,7 @@ class TransactionAdapter(private val dataSet: List<TransactionModel>) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val data = dataSet[position]
+        val data = transactionList[position]
         val transactionType = data.transactionType
         viewHolder.time.text = data.transactionTime
         viewHolder.cause.text = data.categoryCause
@@ -59,7 +65,12 @@ class TransactionAdapter(private val dataSet: List<TransactionModel>) :
         viewHolder.amount.setTextColor(transactionTypeColor(transactionType))
     }
 
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount() = transactionList.size
+
+    fun setData(userList: ArrayList<TransactionModel>) {
+        this.transactionList = userList
+        notifyDataSetChanged()
+    }
 
     private fun transactionTypeColor(int: Int): Int = when (int) {
         1 -> Color.RED // (Expense)

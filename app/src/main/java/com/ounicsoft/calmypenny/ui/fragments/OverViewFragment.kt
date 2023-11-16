@@ -17,16 +17,18 @@ import com.ounicsoft.calmypenny.databinding.FragmentOverViewBinding
 import com.ounicsoft.calmypenny.ui.activity.AddEntryActivity
 import com.ounicsoft.calmypenny.ui.adapter.TransactionAdapter
 import com.ounicsoft.calmypenny.ui.adapter.WalletHomeScreenAdapter
+import com.ounicsoft.calmypenny.viewmodel.TransactionViewModel
 import com.ounicsoft.calmypenny.viewmodel.WalletViewModel
 import ir.mahozad.android.PieChart
 
 class OverViewFragment : Fragment() {
     private lateinit var binding: FragmentOverViewBinding
-    private lateinit var dataSetTransaction: List<TransactionModel>
     private lateinit var transactionAdapter: TransactionAdapter
     private lateinit var walletAdapter: WalletHomeScreenAdapter
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerViewTransactionList: RecyclerView
+    private lateinit var recyclerViewWalletList: RecyclerView
     private lateinit var walletViewModel: WalletViewModel
+    private lateinit var transactionViewModel: TransactionViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -83,33 +85,25 @@ class OverViewFragment : Fragment() {
         )
     }
 
-    private fun sampleDataTransaction() {
-        dataSetTransaction = listOf(
-            TransactionModel(1, 15.50, 1, "18:30 15 Oct, 23", "Groceries", "Cash", null),
-            TransactionModel(2, 25.80, 2, "08:45 22 Sep, 23", "Income", "Cash", null),
-            TransactionModel(3, 30.25, 0, "14:20 05 Nov, 23", "Transfer", "Cash", "bKash"),
-            TransactionModel(4, 12.75, 1, "20:15 10 Oct, 23", "Books", "bKash", null),
-            TransactionModel(5, 18.90, 2, "12:40 03 Sep, 23", "Uber Income", "Cash", null),
-            TransactionModel(6, 22.40, 1, "09:55 08 Nov, 23", "Electronics", "Cash", null),
-            TransactionModel(7, 16.70, 0, "16:10 12 Sep, 23", "Transfer", "Cash", "Dbbl"),
-            TransactionModel(8, 14.20, 1, "22:30 30 Oct, 23", "Clothing", "Bkash", null),
-            TransactionModel(9, 28.60, 1, "11:05 18 Sep, 23", "Books", "Cash", null),
-            TransactionModel(10, 20.30, 2, "19:45 25 Oct, 23", "Salary", "Cash", null),
-        )
-    }
 
     private fun recyclerViewSetupTransaction() {
-        sampleDataTransaction()
-        val recyclerViewTransactions = binding.recyclerViewTransactions
-        recyclerViewTransactions.layoutManager = LinearLayoutManager(context)
-        transactionAdapter = TransactionAdapter(dataSetTransaction)
-        recyclerViewTransactions.adapter = transactionAdapter
+        recyclerViewTransactionList = binding.recyclerViewTransactions
+        transactionAdapter = TransactionAdapter(requireActivity(), ArrayList<TransactionModel>())
+        recyclerViewTransactionList.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = transactionAdapter
+        }
+        transactionViewModel = ViewModelProvider(this).get(TransactionViewModel::class.java)
+        transactionViewModel.getAllTransaction(requireActivity())
+            .observe(requireActivity(), Observer {
+                transactionAdapter.setData(it as ArrayList<TransactionModel>)
+            })
     }
 
     private fun recyclerViewSetupWallet() {
-        recyclerView = binding.recyclerViewWallet
+        recyclerViewWalletList = binding.recyclerViewWallet
         walletAdapter = WalletHomeScreenAdapter(requireActivity(), ArrayList<WalletModel>())
-        recyclerView.apply {
+        recyclerViewWalletList.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = walletAdapter
         }
@@ -124,4 +118,18 @@ class OverViewFragment : Fragment() {
             startActivity(Intent(context, AddEntryActivity::class.java))
         }
     }
+//    private fun sampleDataTransaction() {
+//        dataSetTransaction = listOf(
+//            TransactionModel(1, 15.50, 1, "18:30 15 Oct, 23", "Groceries", "Cash", null),
+//            TransactionModel(2, 25.80, 2, "08:45 22 Sep, 23", "Income", "Cash", null),
+//            TransactionModel(3, 30.25, 0, "14:20 05 Nov, 23", "Transfer", "Cash", "bKash"),
+//            TransactionModel(4, 12.75, 1, "20:15 10 Oct, 23", "Books", "bKash", null),
+//            TransactionModel(5, 18.90, 2, "12:40 03 Sep, 23", "Uber Income", "Cash", null),
+//            TransactionModel(6, 22.40, 1, "09:55 08 Nov, 23", "Electronics", "Cash", null),
+//            TransactionModel(7, 16.70, 0, "16:10 12 Sep, 23", "Transfer", "Cash", "Dbbl"),
+//            TransactionModel(8, 14.20, 1, "22:30 30 Oct, 23", "Clothing", "Bkash", null),
+//            TransactionModel(9, 28.60, 1, "11:05 18 Sep, 23", "Books", "Cash", null),
+//            TransactionModel(10, 20.30, 2, "19:45 25 Oct, 23", "Salary", "Cash", null),
+//        )
+//    }
 }

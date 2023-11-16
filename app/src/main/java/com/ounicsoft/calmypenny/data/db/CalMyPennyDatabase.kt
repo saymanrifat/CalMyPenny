@@ -14,7 +14,7 @@ import com.ounicsoft.calmypenny.ui.utils.Constants.SQLITE_FILE_NAME
 abstract class CalMyPennyDatabase : RoomDatabase() {
 
     abstract fun walletDao(): WalletDao
-    abstract fun entryDao(): TransactionDao
+    abstract fun transactionDao(): TransactionDao
 
     companion object {
         @Volatile
