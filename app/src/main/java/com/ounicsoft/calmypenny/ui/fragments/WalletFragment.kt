@@ -57,48 +57,18 @@ class WalletFragment : Fragment(), WalletListAdapter.WalletClickListener {
             walletAdapter.setData(it as ArrayList<WalletModel>)
         })
         binding.btnAddWalletActivity.setOnClickListener {
-            openDialog()
+            openAddWalletDialog()
         }
     }
 
-    private fun openDialog() {
-        builder = AlertDialog.Builder(requireActivity())
-        val dialogAddNewWalletBinding = DialogAddNewWalletBinding.inflate(layoutInflater)
-        dialog = builder.create()
-        dialog.setView(dialogAddNewWalletBinding.root)
-        edWalletName = dialogAddNewWalletBinding.edWalletName
-        edInitialBalance = dialogAddNewWalletBinding.edInitialBalance
-        dialogAddNewWalletBinding.btnSave.setOnClickListener {
-            saveDataIntoDatabase()
-        }
-        dialog.show()
-    }
-
-    private fun saveDataIntoDatabase() {
-        val walletName = edWalletName.text.toString().trim()
-        val initialBalance = edInitialBalance.text.toString().toDouble()
-        if (!TextUtils.isEmpty(walletName) && !TextUtils.isEmpty(initialBalance.toString())) {
-            walletViewModel.insert(
-                requireActivity(), WalletModel(null, walletName, initialBalance, Color.GRAY)
-            )
-            Toast.makeText(context, "Data added successfully..", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        } else {
-
-            MyToast(requireContext(), "Please fill all the fields..").showToast()
-        }
-    }
 
     override fun onClick(walletEntry: WalletModel) {
-
         openDialogToUpdate(walletEntry)
-        MyToast(requireContext(), "Updated").showToast()
     }
 
     override fun onLongClick(walletEntry: WalletModel) {
-
         val builder: AlertDialog.Builder = AlertDialog.Builder(requireActivity())
-        builder.setMessage("Are you sure?").setTitle("Warning")
+        builder.setMessage("Are you sure?").setTitle("Delete Wallet")
             .setPositiveButton("No") { dialog, which ->
             }.setNegativeButton("Yes") { dialog, which ->
                 walletViewModel.delete(
@@ -107,6 +77,19 @@ class WalletFragment : Fragment(), WalletListAdapter.WalletClickListener {
                 MyToast(requireContext(), "Deleted").showToast()
             }
         val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    private fun openAddWalletDialog() {
+        builder = AlertDialog.Builder(requireActivity())
+        val dialogAddNewWalletBinding = DialogAddNewWalletBinding.inflate(layoutInflater)
+        dialog = builder.create()
+        dialog.setView(dialogAddNewWalletBinding.root)
+        edWalletName = dialogAddNewWalletBinding.edWalletName
+        edInitialBalance = dialogAddNewWalletBinding.edInitialBalance
+        dialogAddNewWalletBinding.btnSave.setOnClickListener {
+            insertDataIntoDatabase()
+        }
         dialog.show()
     }
 
@@ -128,11 +111,37 @@ class WalletFragment : Fragment(), WalletListAdapter.WalletClickListener {
         dialog.show()
     }
 
+
+    private fun insertDataIntoDatabase() {
+        val walletName = edWalletName.text
+        val initialBalance = edInitialBalance.text
+        if (!TextUtils.isEmpty(walletName) && !TextUtils.isEmpty(initialBalance)) {
+            val walletNameStr = walletName.toString().trim()
+            val initialBalanceStr = initialBalance.toString().toDouble()
+            walletViewModel.insert(
+                requireActivity(), WalletModel(null, walletNameStr, initialBalanceStr, Color.GRAY)
+            )
+
+            MyToast(requireActivity(), "Wallet Added").showToast()
+            Toast.makeText(context, "Data added successfully..", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
+        } else {
+            if (TextUtils.isEmpty(walletName)) {
+                edWalletName.error = "This field is required"
+            }
+            if (TextUtils.isEmpty(initialBalance.toString())) {
+                edInitialBalance.error = "This field is required"
+            }
+        }
+    }
+
     private fun updateDataIntoDatabase(walletEntry: WalletModel) {
         val walletName = edWalletName.text.toString().trim()
         val initialBalance = edInitialBalance.text.toString().toDouble()
         if (!TextUtils.isEmpty(walletName) && !TextUtils.isEmpty(initialBalance.toString())) {
-            walletViewModel.insert(
+
+
+            walletViewModel.update(
                 requireActivity(),
                 WalletModel(walletEntry.walletId, walletName, initialBalance, Color.GRAY)
             )
@@ -142,6 +151,4 @@ class WalletFragment : Fragment(), WalletListAdapter.WalletClickListener {
             MyToast(requireContext(), "Please fill all the fields..").showToast()
         }
     }
-
-
 }

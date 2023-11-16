@@ -5,12 +5,14 @@ object Constants {
     const val SQLITE_FILE_NAME = "calmypenny_sqlite"
 
     // Transaction Key
-    const val DB_TRANSACTION_TABLE_NAME = "entrys"
-    const val TRANSACTION_ID = "transaction_id"
+    const val DB_TRANSACTION_TABLE_NAME = "transactions_table"
+    const val TRANSACTION_ID = "transactionId"
     const val AMOUNT = "amount"
-    const val TYPE = "type" // (0=Transfer, 1= Minus, 2= Plus)
+    const val TRANSACTION_TYPE = "transaction_type" // (0=Transfer, 1= Minus, 2= Plus)
     const val TRANSACTION_TIME = "transaction_time"
-    const val CATEGORY = "transaction_category"
+    const val TRANSACTION_FROM = "transaction_from"
+    const val TRANSACTION_TO = "transaction_to"
+    const val CATEGORY_CAUSE = "transaction_category_cause"
 
     // Wallet Key
     const val DB_WALLET_TABLE_NAME = "wallet_table"

@@ -7,17 +7,17 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.ounicsoft.calmypenny.ui.utils.Constants
-import com.ounicsoft.calmypenny.data.model.EntryModel
+import com.ounicsoft.calmypenny.data.model.TransactionModel
 
 @Dao
-interface EntryDao {
+interface TransactionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(entryModel: EntryModel)
+    suspend fun insert(entryModel: TransactionModel)
 
     @Delete
-    suspend fun delete(entryModel: EntryModel)
+    suspend fun delete(entryModel: TransactionModel)
 
     @Query("SELECT * from ${Constants.DB_TRANSACTION_TABLE_NAME}")
-    fun getAllEntry(): LiveData<List<EntryModel>>
+    fun getAllEntry(): LiveData<List<TransactionModel>>
 
 }
