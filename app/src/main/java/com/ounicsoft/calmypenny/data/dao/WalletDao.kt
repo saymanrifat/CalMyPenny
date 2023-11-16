@@ -23,4 +23,7 @@ interface WalletDao {
     @Query("SELECT * from ${Constants.DB_WALLET_TABLE_NAME}")
     fun getAllWallet(): LiveData<List<WalletModel>>
 
+    @Query("SELECT ${Constants.WALLET_NAME} FROM ${Constants.DB_WALLET_TABLE_NAME}")
+    fun getAllWalletName(): LiveData<List<String>>
+
 }

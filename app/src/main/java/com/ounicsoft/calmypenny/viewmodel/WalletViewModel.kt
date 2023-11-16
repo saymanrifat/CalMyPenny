@@ -23,4 +23,8 @@ class WalletViewModel : ViewModel() {
     fun getAllWallet(context: Context): LiveData<List<WalletModel>> {
         return WalletRepository.getAllWallet(context)
     }
+
+    fun getAllWalletName(context: Context): LiveData<List<String>> {
+        return WalletRepository.getAllWalletName(context)
+    }
 }

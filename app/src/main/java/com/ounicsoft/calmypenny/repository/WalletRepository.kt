@@ -46,5 +46,12 @@ class WalletRepository {
             walletDatabase = intialiseDB(context)
             return walletDatabase!!.walletDao().getAllWallet()
         }
+
+        fun getAllWalletName(context: Context): LiveData<List<String>> {
+
+                walletDatabase = intialiseDB(context)
+                return walletDatabase!!.walletDao().getAllWalletName()
+
+        }
     }
 }
