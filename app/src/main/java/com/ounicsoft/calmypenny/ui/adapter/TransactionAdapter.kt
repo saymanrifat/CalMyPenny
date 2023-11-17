@@ -9,7 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ounicsoft.calmypenny.data.model.TransactionModel
-import com.ounicsoft.calmypenny.data.model.WalletModel
 import com.ounicsoft.calmypenny.databinding.TransactionListViewBinding
 
 class TransactionAdapter(
@@ -57,11 +56,8 @@ class TransactionAdapter(
             viewHolder.to.text = data.transactionTo
             viewHolder.toLayout.visibility = View.VISIBLE
         }
-
-
-
-        viewHolder.amount.text =
-            "${transactionTypeSign(data.transactionType)} ${data.amount.toString()}"
+        val amountStr = "${transactionTypeSign(data.transactionType)} ${data.amount.toString()}"
+        viewHolder.amount.text = amountStr
         viewHolder.amount.setTextColor(transactionTypeColor(transactionType))
     }
 

@@ -36,6 +36,5 @@ abstract class CalMyPennyDatabase : RoomDatabase() {
             }
             return instance
         }
-
     }
 }

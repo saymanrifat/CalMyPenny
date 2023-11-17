@@ -13,7 +13,6 @@ class WalletHomeScreenAdapter(
 ) :
     RecyclerView.Adapter<WalletHomeScreenAdapter.ViewHolder>() {
 
-
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
     ): WalletHomeScreenAdapter.ViewHolder {
